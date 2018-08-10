@@ -72,9 +72,10 @@ function removeFromCart(item){
       if(item == list){
         cart =cart.splice(i,1)
         return cart
-       }
+        }
     }
   }
+  return cart
 }  
 function placeOrder(cardNumber) {
   // write your code here
