@@ -23,22 +23,47 @@ function viewCart() {
     return "Your shopping cart is empty."
   }
   else {
-  var contents = ["In your cart, you have "]
+  var contents = "In your cart, you have"
+  var itemsAndPrices = []
   for (var i = 0; i < cart.length; i++) {
-      for (var item in cart[i]) {
-        contents.push(item + " at $" + cart[i][item])
+    itemsAndPrices.push(cart[i]["itemName"] + " at $" + cart[i]["itemPrice"])
       }
   }
-  }
-  return contents
+//for more than 1 item
+  var lastItem
+  var allItems = " "
+  if (itemsAndPrices.length > 1){
+   for (var i = 0; i < itemsAndPrices.length; i++)
+     if (i === (itemsAndPrices.length-1)){ //if there's 2 objects, 0 and 1 index, and length = 2, then this will come back true for index 1
+		lastItem = "and " + itemsAndPrices[i] 
+     }
+     else {
+     	allItems = allItems + itemsAndPrices[i] + ", "	
+     }
+    return contents + allItems + lastItem + "."
+   }
+   else{
+   return contents + " " + itemsAndPrices + "."  
+   }
 }
 
 function total() {
   // write your code here
+  var total = 0
+  for (var i = 0; i < cart.length; i++){
+    total = total + cart[i]["itemPrice"]
+  }
+  return total
 }
 
 function removeFromCart(item) {
   // write your code here
+  for(let i = 0; i < cart.length; i++){
+    if(cart[i]["itemName"] === item){
+      cart = cart.splice(i, 1)
+      return cart;
+    }
+  }
 }
 
 function placeOrder(cardNumber) {
