@@ -34,7 +34,7 @@ function viewCart() {
   var allItems = " "
   if (itemsAndPrices.length > 1){
    for (var i = 0; i < itemsAndPrices.length; i++)
-     if (i === (itemsAndPrices.length-1)){ //if there's 2 objects, 0 and 1 index, and length = 2, then this will come back true for index 1
+     if (i === (itemsAndPrices.length-1)){ //if there's 2 objects, 0 and 1 index, and length = 1, then this will come back true for index 1
 		lastItem = "and " + itemsAndPrices[i] 
      }
      else {
